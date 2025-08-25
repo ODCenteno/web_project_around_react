@@ -1,12 +1,14 @@
-# React + Vite
+# Traveling around the world
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Discover some of the amazing places I visited in a solor trip around Asia, Oceania, and Europe.
 
-Currently, two official plugins are available:
+## Tools and tecnologies used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* HTML and CSS
+* Vainilla Javascript
+* Eslint for code static test
+* React
 
-## Expanding the ESLint configuration
+## Build by ODCenteno
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Visit the ODCenteno [Around the world website](https://odcenteno.github.io/web_project_around_react/)
