@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import Popup from "../Popup/Popup";
 import ImagePopup from "../ImagePopup/ImagePopup";
 import heart from '../../../public/images/heart.svg'

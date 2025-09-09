@@ -1,31 +1,33 @@
+import { useEffect, useState } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext.jsx";
+import api from "../../utils/API.js";
 import Card from "../Card/Card.jsx";
 
 export default function Main() {
+  const [cards, setCards] = useState([])
 
-  const cards = [
-    {
-      isLiked: false,
-      _id: '5d1f0611d321eb4bdcd707dd',
-      name: 'Yosemite Valley',
-      link: 'https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg',
-      owner: '5d1f0611d321eb4bdcd707dd',
-      createdAt: '2019-07-05T08:10:57.741Z',
-    },
-    {
-      isLiked: false,
-      _id: '5d1f064ed321eb4bdcd707de',
-      name: 'Lake Louise',
-      link: 'https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg',
-      owner: '5d1f0611d321eb4bdcd707dd',
-      createdAt: '2019-07-05T08:11:58.324Z',
-    },
-  ];
+  useEffect(() => {
+    const fetchCards = async () => {
+      const cardsRes = await api.getCards();
+      console.log(cardsRes);
+      setCards(cardsRes);
+    }
+    fetchCards();
+  }, [])
+
+  const handleCardLike = async (card) => {
+    const isLiked = card.isLiked;
+
+    await api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
+        setCards((state) => state.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
+    }).catch((error) => console.error(error));
+  }
 
   return (
     <main>
       <ul id="articles" className="articles">
         {cards.map((card) => (
-          <Card key={card._id} card={card} />
+          <Card key={card._id} card={card} onCardLike={handleCardLike} />
         ))}
       </ul>
     </main>
