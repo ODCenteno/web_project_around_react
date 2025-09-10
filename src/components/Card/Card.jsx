@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Popup from "../Popup/Popup";
 import ImagePopup from "../ImagePopup/ImagePopup";
 import heart from '../../../public/images/heart.svg'
 import likeHeart from '../../../public/images/heart-liked.svg'
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 export default function Card(props) {
   const { name, link, isLiked } = props.card;
   const [popup, setPopup] = useState(null);
   const [like, setLike] = useState(isLiked);
+
+  const { currentUser } = useContext(CurrentUserContext);
 
   const imagePopup = {
       children: <ImagePopup card={props.card}/>,
@@ -34,7 +37,7 @@ export default function Card(props) {
       <div className="card__place-info">
         <h3 className="card__place-title">{name}</h3>
         <div className="card__icon-container">
-          <img className="card__like-icon" src={like ? likeHeart : heart} alt="like icon" onClick={() =>setLike(!like)}></img>
+          <img className="card__like-icon" src={like ? likeHeart : heart} alt="like icon" onClick={() => setLike(!like)}></img>
         </div>
       </div>
       {popup && (

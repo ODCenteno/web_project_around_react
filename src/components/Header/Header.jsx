@@ -8,7 +8,8 @@ import EditProfilePopup from "../EditProfile/EditProfile";
 export default function Header(props) {
   const [popup, setPopup] = useState(null);
 
-  const currentUser = useContext(CurrentUserContext);
+  const userContext = useContext(CurrentUserContext);
+  const { currentUser } = userContext;
 
 
   const newCardPopup = {

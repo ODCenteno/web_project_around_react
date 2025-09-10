@@ -33,7 +33,7 @@ class Api {
   saveUserDetails(userDetails) {
     return this._callApi("users/me", "PATCH", {
       name: userDetails.name,
-      about: userDetails.description,
+      about: userDetails.about,
     });
   }
 
@@ -70,7 +70,7 @@ class Api {
 const api = new Api({
   baseUrl: "https://around-api.es.tripleten-services.com/v1/",
   headers: {
-    Authorization: "a5cb0d16-6952-4c7a-a5a0-b8b568da9065",
+    authorization: "a5cb0d16-6952-4c7a-a5a0-b8b568da9065",
     "Content-Type": "application/json",
   },
 });

@@ -23,11 +23,15 @@ export default function Main() {
     }).catch((error) => console.error(error));
   }
 
+  const handleCardDelete = async (card) => {
+
+  }
+
   return (
     <main>
       <ul id="articles" className="articles">
         {cards.map((card) => (
-          <Card key={card._id} card={card} onCardLike={handleCardLike} />
+          <Card key={card._id} card={card} onCardLike={handleCardLike} onCardDelete={handleCardDelete}/>
         ))}
       </ul>
     </main>
