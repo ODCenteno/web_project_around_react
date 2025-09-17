@@ -15,7 +15,6 @@ function App() {
   useEffect(() => {
     const fetchCards = async () => {
       const cardsRes = await api.getCards();
-      console.log(cardsRes);
       setCards(cardsRes);
     }
     fetchCards();
@@ -30,9 +29,18 @@ function App() {
   }
 
   const handleCardDelete = (cardToDelete) => {
-    console.log("DELETEANDO", cardToDelete._id)
     const updatedCards = cards.filter((card) => card._id !== cardToDelete._id)
     setCards(updatedCards)
+  }
+
+  const handleAddPlaceSubmit = (newPlace) => {
+    (async () => {
+      await api.postNewCard(newPlace).then((newCard) => {
+        setCards([newCard, ...cards]);
+        handleClosePopup();
+        })
+        .catch((error) => console.error(error));
+    })();
   }
 
   useEffect(() => {
@@ -62,23 +70,15 @@ function App() {
     setPopup(null);
   }
 
-  function onUpdateAvatar({ avatar }) {
-    setCurrentUser({...currentUser, avatar});
+  function onUpdateAvatar(avatar) {
+    api.saveAvatar(avatar).then((user) => setCurrentUser(user)
+    );
     handleClosePopup();
   }
 
-  // useEffect(() => {
-  //   const deleteCard = async (cardKey) => {
-  //     const cardsRes = await api.deleteCard(cardKey);
-  //     console.log('Deleted card', cardsRes);
-  //     setCards(cardsRes);
-  //   }
-  //   deleteCard();
-  // }, [handleCardDelete])
-
   return (
     <div className="page">
-      <CurrentUserContext.Provider value={{ currentUser, handleUpdateUser,  onUpdateAvatar}}>
+      <CurrentUserContext.Provider value={{ currentUser, handleUpdateUser,  onUpdateAvatar, handleAddPlaceSubmit}}>
         <Header
           aroundLogo={logo}
           onOpenPopup={handleOpenPopup}

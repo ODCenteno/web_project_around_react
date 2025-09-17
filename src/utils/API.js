@@ -42,7 +42,6 @@ class Api {
   }
 
   getCards() {
-    console.log("Obteniendo Cards");
     return this._callApi(`cards/`);
   }
 

@@ -11,7 +11,6 @@ export default function Header(props) {
   const userContext = useContext(CurrentUserContext);
   const { currentUser } = userContext;
 
-
   const newCardPopup = {
     title: "Nuevo lugar",
     children: <NewCard />,
