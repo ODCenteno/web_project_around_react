@@ -1,4 +1,4 @@
-import CurrentUserContext from "../../contexts/CurrentUserContext.jsx";
+import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 import Card from "../Card/Card.jsx";
 
 export default function Main({cards, onCardLike, onCardDelete}) {
@@ -10,7 +10,7 @@ export default function Main({cards, onCardLike, onCardDelete}) {
           <Card
             key={card._id}
             card={card}
-            onCardLike={onCardLike} 
+            onCardLike={onCardLike}
             onCardDelete={onCardDelete}/>
         ))}
       </ul>

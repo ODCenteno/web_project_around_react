@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import CurrentUserContext from '../contexts/CurrentUserContext.jsx'
+import CurrentUserContext from '../contexts/CurrentUserContext.js'
 import logo from '../../public/logo.svg'
 import '../index.css'
 import Footer from './Footer/Footer.jsx'

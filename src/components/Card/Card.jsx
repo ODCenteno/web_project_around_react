@@ -3,7 +3,7 @@ import Popup from "../Popup/Popup";
 import ImagePopup from "../ImagePopup/ImagePopup";
 import heart from '../../../public/images/heart.svg'
 import likeHeart from '../../../public/images/heart-liked.svg'
-import CurrentUserContext from '../../contexts/CurrentUserContext';
+import CurrentUserContext from '../../contexts/CurrentUserContext.js';
 import ConfirmationPopup from "../ConfirmationPopup/ConfirmationPopup";
 
 export default function Card(props) {
