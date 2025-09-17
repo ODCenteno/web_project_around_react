@@ -10,11 +10,34 @@ import api from '../utils/API.js'
 function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [popup, setPopup] = useState(null);
+  const [cards, setCards] = useState([])
+
+  useEffect(() => {
+    const fetchCards = async () => {
+      const cardsRes = await api.getCards();
+      console.log(cardsRes);
+      setCards(cardsRes);
+    }
+    fetchCards();
+  }, [])
+
+  const handleCardLike = async (card) => {
+    const isLiked = card.isLiked;
+
+    await api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
+        setCards((state) => state.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
+    }).catch((error) => console.error(error));
+  }
+
+  const handleCardDelete = (cardToDelete) => {
+    console.log("DELETEANDO", cardToDelete._id)
+    const updatedCards = cards.filter((card) => card._id !== cardToDelete._id)
+    setCards(updatedCards)
+  }
 
   useEffect(() => {
     const fetchUser = async () => {
       await api.getUserInfo().then((userRes) => {
-        console.log('Curren USER: ', userRes);
         setCurrentUser(userRes);
       });
     }
@@ -44,6 +67,15 @@ function App() {
     handleClosePopup();
   }
 
+  // useEffect(() => {
+  //   const deleteCard = async (cardKey) => {
+  //     const cardsRes = await api.deleteCard(cardKey);
+  //     console.log('Deleted card', cardsRes);
+  //     setCards(cardsRes);
+  //   }
+  //   deleteCard();
+  // }, [handleCardDelete])
+
   return (
     <div className="page">
       <CurrentUserContext.Provider value={{ currentUser, handleUpdateUser,  onUpdateAvatar}}>
@@ -53,7 +85,10 @@ function App() {
           onClosePopup={handleClosePopup}
           popup={popup}>
         </Header>
-        <Main></Main>
+        <Main
+          cards={cards}
+          onCardLike={handleCardLike} onCardDelete={handleCardDelete}>
+        </Main>
         <Footer></Footer>
       </CurrentUserContext.Provider>
     </div>
