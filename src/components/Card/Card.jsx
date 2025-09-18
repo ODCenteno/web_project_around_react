@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Popup from "../Popup/Popup";
-import ImagePopup from "../ImagePopup/ImagePopup";
+import ImagePopup from "../Popup/ImagePopup/ImagePopup.jsx";
 import heart from '../../../public/images/heart.svg'
 import likeHeart from '../../../public/images/heart-liked.svg'
 import CurrentUserContext from '../../contexts/CurrentUserContext.js';
-import ConfirmationPopup from "../ConfirmationPopup/ConfirmationPopup";
+import ConfirmationPopup from "../Popup/ConfirmationPopup/ConfirmationPopup.jsx";
 
 export default function Card(props) {
   const { name, link, isLiked } = props.card;

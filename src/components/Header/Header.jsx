@@ -1,9 +1,9 @@
 import { useContext } from "react"
 import CurrentUserContext from "../../contexts/CurrentUserContext.js"
 import Popup from '../Popup/Popup'
-import NewCard from "../NewCard/NewCard";
-import EditAvatarPopup from "../Avatar/EditAvatar";
-import EditProfilePopup from "../EditProfile/EditProfile";
+import NewCard from "../Popup/NewCard/NewCard.jsx";
+import EditAvatarPopup from "../Popup/EditAvatar/EditAvatar.jsx";
+import EditProfilePopup from "../Popup/EditProfile/EditProfile.jsx";
 
 export default function Header(props) {
   const { aroundLogo, onOpenPopup, onClosePopup, popup } = props;
