@@ -1,9 +1,8 @@
 import { useState } from "react";
 import Popup from "../Popup/Popup";
 import ImagePopup from "../Popup/ImagePopup/ImagePopup.jsx";
-import heart from '../../../public/images/heart.svg'
-import likeHeart from '../../../public/images/heart-liked.svg'
-import CurrentUserContext from '../../contexts/CurrentUserContext.js';
+import heart from '../../../../images/heart.svg'
+import likeHeart from '../../../../images/heart-liked.svg'
 import ConfirmationPopup from "../Popup/ConfirmationPopup/ConfirmationPopup.jsx";
 
 export default function Card(props) {
@@ -35,12 +34,10 @@ export default function Card(props) {
 
   function handleLikeClick(popup) {
     setClicks(clicks + 1);
-    console.log('Clicks given: ', clicks + 1)
     handleOpenPopup(popup);
   }
 
   const handleDeleteClick = (popup) => {
-    console.log('Deleteando', popup);
     setPopup(popup);
   }
 
