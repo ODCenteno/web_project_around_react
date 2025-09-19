@@ -1,4 +1,5 @@
 import Card from "./components/Card/Card.jsx";
+import CurrentUserContext from '../../contexts/CurrentUserContext.js'
 
 export default function Main({cards, onCardLike, onCardDelete}) {
 
