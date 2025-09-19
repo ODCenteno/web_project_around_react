@@ -1,9 +1,9 @@
 import { useContext } from "react"
 import CurrentUserContext from "../../contexts/CurrentUserContext.js"
-import Popup from '../Main/Popup/Popup.jsx'
+import Popup from '../main/Popup/Popup.jsx'
 import NewCard from "../Main/Popup/NewCard/NewCard.jsx";
-import EditAvatarPopup from "../Main/Popup/EditAvatar/EditAvatar.jsx";
-import EditProfilePopup from "../Main/Popup/EditProfile/EditProfile.jsx";
+import EditAvatar from "../Main/Popup/EditAvatar/EditAvatar.jsx";
+import EditProfile from "../Main/Popup/EditProfile/EditProfile.jsx";
 
 export default function Header(props) {
   const { aroundLogo, onOpenPopup, onClosePopup, popup } = props;
@@ -17,15 +17,15 @@ export default function Header(props) {
     popupId: "edit-profile-popup",
   };
 
-  const editProfilePopup = {
+  const EditProfile = {
     title: "Editar perfil",
-    children: <EditProfilePopup />,
+    children: <EditProfile />,
     popupId: "edit-profile-popup",
   };
 
-  const editAvatarPopup = {
+  const EditAvatar = {
     title: "Cambiar foto de perfil",
-    children: <EditAvatarPopup />,
+    children: <EditAvatar />,
     popupId: "avatar-popup",
   };
 
@@ -36,7 +36,7 @@ export default function Header(props) {
       </div>
       <hr className="header__divisor"></hr>
       <nav className="nav header__nav">
-        <div className="nav__avatar-container nav__avatar-position" onClick={() => onOpenPopup(editAvatarPopup)}>
+        <div className="nav__avatar-container nav__avatar-position" onClick={() => onOpenPopup(EditAvatar)}>
           <img src={currentUser.avatar} alt="Omar Daniel Photo" className="nav__avatar"></img>
         </div>
         <div className="nav__container">
@@ -44,7 +44,7 @@ export default function Header(props) {
             <h1 className="nav__name">{currentUser.name}
             </h1>
             <button className="button nav__button-edit" id="edit-profile-btn"
-              title="Da Clic para modificar la información del perfil" onClick={() => onOpenPopup(editProfilePopup)}></button>
+              title="Da Clic para modificar la información del perfil" onClick={() => onOpenPopup(EditProfile)}></button>
           </div>
           <p className="nav__job-title">{currentUser.about}</p>
         </div>

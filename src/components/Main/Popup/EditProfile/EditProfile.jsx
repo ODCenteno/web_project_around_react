@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import CurrentUserContext from '../../../../contexts/CurrentUserContext.js';
 
-export default function EditProfilePopup() {
+export default function EditProfile() {
   const userContext = useContext(CurrentUserContext);
   const { currentUser, handleUpdateUser } = userContext;
 

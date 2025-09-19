@@ -1,7 +1,7 @@
 import { useContext, useRef } from 'react';
 import CurrentUserContext from '../../../../contexts/CurrentUserContext.js';
 
-export default function EditAvatarPopup() {
+export default function EditAvatar() {
   const userContext = useContext(CurrentUserContext);
   const { onUpdateAvatar } = userContext;
 
